@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afterword – Sculpting the delicate shadows of argument</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-dark: #2d4a5f;
+            --blue-mid: #4a6b82;
+            --blue-light: #6a8ba3;
+            --red: #c63939;
+            --dark-red: #a42e2e;
+            --cream: #f5f1e3;
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --nw-footer-color: #f5f1e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: var(--blue-mid);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Crosshatch texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+                repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,0.02) 1px, rgba(0,0,0,0.02) 2px);
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Sketch lines background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to bottom, transparent 48%, rgba(29, 45, 60, 0.5) 49%, rgba(29, 45, 60, 0.5) 51%, transparent 52%);
+            background-size: 100% 8px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Large illustrated header */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, #3d5a72 0%, #2d4a5f 50%, #1d3a4f 100%);
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.6),
+                inset 0 0 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.02) 3px, rgba(255,255,255,0.02) 6px),
+                repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.02) 3px, rgba(255,255,255,0.02) 6px);
+            pointer-events: none;
+        }
+
+        .header-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            position: relative;
+            background: radial-gradient(circle, rgba(106, 139, 163, 0.3), transparent);
+            box-shadow: 
+                inset 0 0 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-circle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .astrolabe {
+            width: 90px;
+            height: 90px;
+            position: relative;
+            opacity: 0.15;
+        }
+
+        .astrolabe-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1.5px solid var(--cream);
+            border-radius: 50%;
+        }
+
+        .astrolabe-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--cream);
+            border-radius: 50%;
+        }
+
+        .astrolabe-ring-1 { width: 85%; height: 85%; }
+        .astrolabe-ring-2 { width: 70%; height: 70%; }
+        .astrolabe-ring-3 { width: 55%; height: 55%; }
+        .astrolabe-ring-4 { width: 40%; height: 40%; }
+
+        .astrolabe-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: var(--cream);
+            border-radius: 50%;
+        }
+
+        .astrolabe-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 50%;
+            background: var(--cream);
+            transform-origin: top center;
+        }
+
+        .astrolabe-line:nth-child(1) { transform: translate(-50%, 0) rotate(0deg); }
+        .astrolabe-line:nth-child(2) { transform: translate(-50%, 0) rotate(30deg); }
+        .astrolabe-line:nth-child(3) { transform: translate(-50%, 0) rotate(60deg); }
+        .astrolabe-line:nth-child(4) { transform: translate(-50%, 0) rotate(90deg); }
+        .astrolabe-line:nth-child(5) { transform: translate(-50%, 0) rotate(120deg); }
+        .astrolabe-line:nth-child(6) { transform: translate(-50%, 0) rotate(150deg); }
+
+        .astrolabe-pointer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1.5px;
+            height: 45%;
+            background: linear-gradient(to bottom, var(--cream), transparent);
+            transform-origin: top center;
+            transform: translate(-50%, 0) rotate(45deg);
+        }
+
+        .astrolabe-mark {
+            position: absolute;
+            width: 1px;
+            height: 6px;
+            background: var(--cream);
+            top: 0;
+            left: 50%;
+            transform-origin: 50% 45px;
+        }
+
+        .astrolabe-mark:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+        .astrolabe-mark:nth-child(2) { transform: translateX(-50%) rotate(15deg); }
+        .astrolabe-mark:nth-child(3) { transform: translateX(-50%) rotate(30deg); }
+        /* ... (marks continue) ... */
+        .astrolabe-mark:nth-child(24) { transform: translateX(-50%) rotate(345deg); }
+
+        h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 6px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3), 0 0 20px rgba(198, 57, 57, 0.5);
+            position: relative;
+            padding: 10px 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--cream);
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Grid layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: start;
+        }
+
+        /* New Column class to stack items vertically */
+        .grid-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .category {
+            background: linear-gradient(135deg, rgba(61, 90, 114, 0.9), rgba(45, 74, 95, 0.85));
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 10px;
+            padding: 15px 14px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .category::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.03) 4px, rgba(0,0,0,0.03) 5px);
+            border-radius: 10px; pointer-events: none;
+        }
+
+        .category-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 14px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--red);
+            position: relative;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .subcategory {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(245, 241, 227, 0.05);
+            border-left: 2px solid var(--cream);
+            border-radius: 4px;
+        }
+
+        .subcategory-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 7px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .resources {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px 10px;
+            background: rgba(245, 241, 227, 0.08);
+            color: var(--cream);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1.5px solid rgba(245, 241, 227, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .resource-link:hover {
+            color: var(--white);
+            border-color: var(--red);
+            transform: translateX(5px);
+            box-shadow: 0 3px 12px rgba(198, 57, 57, 0.4);
+            background: var(--red);
+        }
+
+        .lang-tag {
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            background: rgba(198, 57, 57, 0.3);
+            color: var(--cream);
+            border-radius: 6px;
+            font-weight: 700;
+            margin-left: 7px;
+        }
+
+        .simple-links {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(45, 74, 95, 0.9), rgba(29, 58, 79, 0.85));
+            border-top: 2px solid var(--red);
+            color: var(--nw-footer-color);
+            font-size: 0.85rem;
+            border-radius: 8px;
+        }
+
+        footer a { color: var(--nw-footer-color); text-decoration: underline; }
+        footer .heart { color: var(--red); }
+
+        .sketch-corner { position: absolute; width: 40px; height: 40px; opacity: 0.3; }
+        .sketch-corner-tl { top: 6px; left: 6px; border-top: 1.5px solid var(--cream); border-left: 1.5px solid var(--cream); }
+        .sketch-corner-tr { top: 6px; right: 6px; border-top: 1.5px solid var(--cream); border-right: 1.5px solid var(--cream); }
+        .sketch-corner-bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid var(--cream); border-left: 1.5px solid var(--cream); }
+        .sketch-corner-br { bottom: 6px; right: 6px; border-bottom: 1.5px solid var(--cream); border-right: 1.5px solid var(--cream); }
+
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="sketch-corner sketch-corner-tl"></div>
+            <div class="sketch-corner sketch-corner-tr"></div>
+            <div class="sketch-corner sketch-corner-bl"></div>
+            <div class="sketch-corner sketch-corner-br"></div>
+
+            <div class="header-circle">
+                <div class="astrolabe">
+                    <div class="astrolabe-outer"></div>
+                    <div class="astrolabe-ring astrolabe-ring-1"></div>
+                    <div class="astrolabe-ring astrolabe-ring-2"></div>
+                    <div class="astrolabe-ring astrolabe-ring-3"></div>
+                    <div class="astrolabe-ring astrolabe-ring-4"></div>
+                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
+                    <div class="astrolabe-pointer"></div>
+                    <div class="astrolabe-center"></div>
+                    <div class="astrolabe-mark"></div><div class="astrolabe-mark"></div>
+                </div>
+            </div>
+
+            <h1>Afterword</h1>
+            <p class="subtitle">Sculpting the delicate shadows of argument</p>
+        </header>
+
+        <div class="main-grid">
+            
+            <div class="grid-column">
+                <div class="category">
+                    <h2 class="category-title">Ανθρωπιστικές Επιστήμες</h2>
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Θέατρο & Παραστατικές Τέχνες</h3>
+                        <div class="resources">
+                            <a href="https://aact.org/theatre-terms" class="resource-link" target="_blank">
+                                <span class="resource-name">Theatre Glossaries</span><span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://www.abt.org/explore/learn/ballet-dictionary/" class="resource-link" target="_blank">
+                                <span class="resource-name">Ballet Dictionary</span><span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Καλές Τέχνες</h3>
+                        <div class="resources">
+                            <a href="http://www.artcyclopedia.com/general/alphabetic.html" class="resource-link" target="_blank">
+                                <span class="resource-name">Artcyclopedia</span><span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-column">
+                <div class="category">
+                    <h2 class="category-title">Κοινωνικές Επιστήμες</h2>
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Ανθρωπολογία</h3>
+                        <div class="resources">
+                            <a href="https://anthropologyreview.org/category/anthropology-glossary-of-terms/" class="resource-link" target="_blank">
+                                <span class="resource-name">Anthropological Glossary</span><span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Ψυχολογία</h3>
+                        <div class="resources">
+                            <a href="https://dictionary.apa.org/" class="resource-link" target="_blank">
+                                <span class="resource-name">Psychology Dictionary</span><span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h2 class="category-title">Ιστότοποι</h2>
+                    <div class="simple-links">
+                        <a href="http://vos.ucsb.edu/" class="resource-link" target="_blank">
+                            <span class="resource-name">Voice Of The Shuttle</span><span class="lang-tag">EN</span>
+                        </a>
+                        <a href="https://iate.europa.eu/home" class="resource-link" target="_blank">
+                            <span class="resource-name">IATE – Terminology For Europe</span><span class="lang-tag">EN</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div> <footer>
+            <p>Made with <span class="heart">❤️</span> for <a href="https://www.metafrasi.edu.gr/" target="_blank">meta|φραση</a> by <a href="#" target="_blank">Christine Vasileiadou</a>, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
