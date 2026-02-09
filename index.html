@@ -88,6 +88,7 @@
             overflow: hidden;
         }
 
+        /* Sketch overlay on header */
         header::before {
             content: '';
             position: absolute;
@@ -101,6 +102,7 @@
             pointer-events: none;
         }
 
+        /* Illustrated astrolabe - watermark style */
         .header-circle {
             width: 120px;
             height: 120px;
@@ -129,6 +131,7 @@
             border-radius: 50%;
         }
 
+        /* Astrolabe watermark */
         .astrolabe {
             width: 90px;
             height: 90px;
@@ -136,6 +139,7 @@
             opacity: 0.15;
         }
 
+        /* Main outer ring */
         .astrolabe-outer {
             position: absolute;
             width: 100%;
@@ -144,6 +148,7 @@
             border-radius: 50%;
         }
 
+        /* Inner rings */
         .astrolabe-ring {
             position: absolute;
             top: 50%;
@@ -153,11 +158,27 @@
             border-radius: 50%;
         }
 
-        .astrolabe-ring-1 { width: 85%; height: 85%; }
-        .astrolabe-ring-2 { width: 70%; height: 70%; }
-        .astrolabe-ring-3 { width: 55%; height: 55%; }
-        .astrolabe-ring-4 { width: 40%; height: 40%; }
+        .astrolabe-ring-1 {
+            width: 85%;
+            height: 85%;
+        }
 
+        .astrolabe-ring-2 {
+            width: 70%;
+            height: 70%;
+        }
+
+        .astrolabe-ring-3 {
+            width: 55%;
+            height: 55%;
+        }
+
+        .astrolabe-ring-4 {
+            width: 40%;
+            height: 40%;
+        }
+
+        /* Center point */
         .astrolabe-center {
             position: absolute;
             top: 50%;
@@ -169,6 +190,7 @@
             border-radius: 50%;
         }
 
+        /* Radial lines */
         .astrolabe-line {
             position: absolute;
             top: 50%;
@@ -186,6 +208,7 @@
         .astrolabe-line:nth-child(5) { transform: translate(-50%, 0) rotate(120deg); }
         .astrolabe-line:nth-child(6) { transform: translate(-50%, 0) rotate(150deg); }
 
+        /* Pointer/rete arm */
         .astrolabe-pointer {
             position: absolute;
             top: 50%;
@@ -197,6 +220,7 @@
             transform: translate(-50%, 0) rotate(45deg);
         }
 
+        /* Decorative marks around edge */
         .astrolabe-mark {
             position: absolute;
             width: 1px;
@@ -210,9 +234,29 @@
         .astrolabe-mark:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
         .astrolabe-mark:nth-child(2) { transform: translateX(-50%) rotate(15deg); }
         .astrolabe-mark:nth-child(3) { transform: translateX(-50%) rotate(30deg); }
-        /* ... (marks continue) ... */
+        .astrolabe-mark:nth-child(4) { transform: translateX(-50%) rotate(45deg); }
+        .astrolabe-mark:nth-child(5) { transform: translateX(-50%) rotate(60deg); }
+        .astrolabe-mark:nth-child(6) { transform: translateX(-50%) rotate(75deg); }
+        .astrolabe-mark:nth-child(7) { transform: translateX(-50%) rotate(90deg); }
+        .astrolabe-mark:nth-child(8) { transform: translateX(-50%) rotate(105deg); }
+        .astrolabe-mark:nth-child(9) { transform: translateX(-50%) rotate(120deg); }
+        .astrolabe-mark:nth-child(10) { transform: translateX(-50%) rotate(135deg); }
+        .astrolabe-mark:nth-child(11) { transform: translateX(-50%) rotate(150deg); }
+        .astrolabe-mark:nth-child(12) { transform: translateX(-50%) rotate(165deg); }
+        .astrolabe-mark:nth-child(13) { transform: translateX(-50%) rotate(180deg); }
+        .astrolabe-mark:nth-child(14) { transform: translateX(-50%) rotate(195deg); }
+        .astrolabe-mark:nth-child(15) { transform: translateX(-50%) rotate(210deg); }
+        .astrolabe-mark:nth-child(16) { transform: translateX(-50%) rotate(225deg); }
+        .astrolabe-mark:nth-child(17) { transform: translateX(-50%) rotate(240deg); }
+        .astrolabe-mark:nth-child(18) { transform: translateX(-50%) rotate(255deg); }
+        .astrolabe-mark:nth-child(19) { transform: translateX(-50%) rotate(270deg); }
+        .astrolabe-mark:nth-child(20) { transform: translateX(-50%) rotate(285deg); }
+        .astrolabe-mark:nth-child(21) { transform: translateX(-50%) rotate(300deg); }
+        .astrolabe-mark:nth-child(22) { transform: translateX(-50%) rotate(315deg); }
+        .astrolabe-mark:nth-child(23) { transform: translateX(-50%) rotate(330deg); }
         .astrolabe-mark:nth-child(24) { transform: translateX(-50%) rotate(345deg); }
 
+        /* Title in red banner style */
         h1 {
             font-family: 'EB Garamond', serif;
             font-size: 2rem;
@@ -221,10 +265,17 @@
             margin-bottom: 6px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3), 0 0 20px rgba(198, 57, 57, 0.5);
+            text-shadow: 
+                2px 2px 0 rgba(0, 0, 0, 0.3),
+                -1px -1px 0 rgba(255, 255, 255, 0.1),
+                0 0 20px rgba(198, 57, 57, 0.5);
             position: relative;
             padding: 10px 20px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.2) 100%);
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 20%, 
+                transparent 80%, 
+                rgba(0, 0, 0, 0.2) 100%);
         }
 
         .subtitle {
@@ -244,14 +295,14 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 20px;
-            align-items: start;
         }
 
-        /* New Column class to stack items vertically */
-        .grid-column {
+        /* Column wrappers so the right side can stack Social Sciences + Websites */
+        .grid-col {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            min-width: 0;
         }
 
         .category {
@@ -259,15 +310,24 @@
             border: 2px solid rgba(245, 241, 227, 0.3);
             border-radius: 10px;
             padding: 15px 14px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
         }
 
+        /* Sketch effect on categories */
         .category::before {
             content: '';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.03) 4px, rgba(0,0,0,0.03) 5px);
-            border-radius: 10px; pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.03) 4px, rgba(0,0,0,0.03) 5px);
+            border-radius: 10px;
+            pointer-events: none;
         }
 
         .category-title {
@@ -282,7 +342,21 @@
             position: relative;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            text-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 
+                1.5px 1.5px 0 rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(198, 57, 57, 0.4);
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--red);
+            box-shadow: 0 0 8px rgba(198, 57, 57, 0.6);
         }
 
         .subcategory {
@@ -322,7 +396,23 @@
             border: 1.5px solid rgba(245, 241, 227, 0.2);
             transition: all 0.3s ease;
             position: relative;
-            z-index: 1;
+        }
+
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--red);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .resource-link:hover::before {
+            width: 100%;
         }
 
         .resource-link:hover {
@@ -330,7 +420,17 @@
             border-color: var(--red);
             transform: translateX(5px);
             box-shadow: 0 3px 12px rgba(198, 57, 57, 0.4);
-            background: var(--red);
+        }
+
+        .resource-link:hover .lang-tag {
+            background: var(--white);
+            color: var(--red);
+        }
+
+        .resource-name {
+            flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .lang-tag {
@@ -341,6 +441,9 @@
             border-radius: 6px;
             font-weight: 700;
             margin-left: 7px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .simple-links {
@@ -358,19 +461,101 @@
             color: var(--nw-footer-color);
             font-size: 0.85rem;
             border-radius: 8px;
+            box-shadow: 0 -5px 20px rgba(198, 57, 57, 0.2);
         }
 
-        footer a { color: var(--nw-footer-color); text-decoration: underline; }
-        footer .heart { color: var(--red); }
+        footer a {
+            color: var(--nw-footer-color);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
 
-        .sketch-corner { position: absolute; width: 40px; height: 40px; opacity: 0.3; }
-        .sketch-corner-tl { top: 6px; left: 6px; border-top: 1.5px solid var(--cream); border-left: 1.5px solid var(--cream); }
-        .sketch-corner-tr { top: 6px; right: 6px; border-top: 1.5px solid var(--cream); border-right: 1.5px solid var(--cream); }
-        .sketch-corner-bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid var(--cream); border-left: 1.5px solid var(--cream); }
-        .sketch-corner-br { bottom: 6px; right: 6px; border-bottom: 1.5px solid var(--cream); border-right: 1.5px solid var(--cream); }
+        footer a:hover {
+            color: var(--red);
+        }
 
+        footer .heart {
+            color: var(--red);
+            font-size: 1rem;
+        }
+
+        /* Sketch corner details */
+        .sketch-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+        }
+
+        .sketch-corner-tl {
+            top: 6px;
+            left: 6px;
+            border-top: 1.5px solid var(--cream);
+            border-left: 1.5px solid var(--cream);
+        }
+
+        .sketch-corner-tr {
+            top: 6px;
+            right: 6px;
+            border-top: 1.5px solid var(--cream);
+            border-right: 1.5px solid var(--cream);
+        }
+
+        .sketch-corner-bl {
+            bottom: 6px;
+            left: 6px;
+            border-bottom: 1.5px solid var(--cream);
+            border-left: 1.5px solid var(--cream);
+        }
+
+        .sketch-corner-br {
+            bottom: 6px;
+            right: 6px;
+            border-bottom: 1.5px solid var(--cream);
+            border-right: 1.5px solid var(--cream);
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
-            .main-grid { grid-template-columns: 1fr; }
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+
+            .header-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .astrolabe {
+                width: 75px;
+                height: 75px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .subtitle {
+                font-size: 0.8rem;
+            }
+
+            .header-circle {
+                width: 90px;
+                height: 90px;
+            }
+
+            .astrolabe {
+                width: 65px;
+                height: 65px;
+            }
         }
     </style>
 </head>
@@ -389,12 +574,38 @@
                     <div class="astrolabe-ring astrolabe-ring-2"></div>
                     <div class="astrolabe-ring astrolabe-ring-3"></div>
                     <div class="astrolabe-ring astrolabe-ring-4"></div>
-                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
-                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
-                    <div class="astrolabe-line"></div><div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
+                    <div class="astrolabe-line"></div>
                     <div class="astrolabe-pointer"></div>
                     <div class="astrolabe-center"></div>
-                    <div class="astrolabe-mark"></div><div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
+                    <div class="astrolabe-mark"></div>
                 </div>
             </div>
 
@@ -403,68 +614,176 @@
         </header>
 
         <div class="main-grid">
-            
-            <div class="grid-column">
+            <div class="grid-col">
+                <!-- ΑΝΘΡΩΠΙΣΤΙΚΕΣ ΕΠΙΣΤΗΜΕΣ -->
                 <div class="category">
                     <h2 class="category-title">Ανθρωπιστικές Επιστήμες</h2>
+
                     <div class="subcategory">
                         <h3 class="subcategory-title">Θέατρο & Παραστατικές Τέχνες</h3>
                         <div class="resources">
-                            <a href="https://aact.org/theatre-terms" class="resource-link" target="_blank">
-                                <span class="resource-name">Theatre Glossaries</span><span class="lang-tag">EN</span>
+                            <a href="https://aact.org/theatre-terms" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Theatre Glossaries</span>
+                                <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://www.abt.org/explore/learn/ballet-dictionary/" class="resource-link" target="_blank">
-                                <span class="resource-name">Ballet Dictionary</span><span class="lang-tag">EN</span>
+                            <a href="https://www.abt.org/explore/learn/ballet-dictionary/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Ballet Dictionary</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://www.pro-dance.gr/dances/ballet-modern-contemporary-jazz-tap-irish/ballet-dance/ballet-dictionary" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Το Λεξικό Του Μπαλέτου</span>
+                                <span class="lang-tag">GR</span>
                             </a>
                         </div>
                     </div>
+
                     <div class="subcategory">
                         <h3 class="subcategory-title">Καλές Τέχνες</h3>
                         <div class="resources">
-                            <a href="http://www.artcyclopedia.com/general/alphabetic.html" class="resource-link" target="_blank">
-                                <span class="resource-name">Artcyclopedia</span><span class="lang-tag">EN</span>
+                            <a href="http://www.artcyclopedia.com/general/alphabetic.html" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Artcyclopedia</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://www.nikias.gr/view_lexicon.php" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Λεξικό Καλλιτεχνικών Όρων</span>
+                                <span class="lang-tag">GR</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Λογοτεχνία</h3>
+                        <div class="resources">
+                            <a href="https://literaryterms.net/glossary-of-literary-terms/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Glossary Of Literary Terms</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://ebooks.edu.gr/ebooks/v/html/8547/4716/Lexiko-Logotechnikon-Oron_Gymnasiou-Lykeiou_html-apli/index01.htm" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Λεξικό Λογοτεχνικών Όρων</span>
+                                <span class="lang-tag">GR</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Μουσική</h3>
+                        <div class="resources">
+                            <a href="https://www.canteach.ca/resources/fine-arts/music/glossary-of-musical-terms-and-forms/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Glossary Of Musical Terms & Forms</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Ιστορία</h3>
+                        <div class="resources">
+                            <a href="https://en.wikipedia.org/wiki/Glossary_of_history" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Glossary Of History</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://www.ime.gr/chronos/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Η Ελληνική Ιστορία Στο Διαδίκτυο</span>
+                                <span class="lang-tag">EN & GR</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Φιλοσοφία</h3>
+                        <div class="resources">
+                            <a href="https://www.philosophypages.com/dy/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">A Dictionary Of Philosophical Terms & Names</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://iep.utm.edu/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">The Internet Encyclopedia Of Philosophy</span>
+                                <span class="lang-tag">EN</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="grid-column">
+            <div class="grid-col">
+                <!-- ΚΟΙΝΩΝΙΚΕΣ ΕΠΙΣΤΗΜΕΣ -->
                 <div class="category">
                     <h2 class="category-title">Κοινωνικές Επιστήμες</h2>
+
                     <div class="subcategory">
                         <h3 class="subcategory-title">Ανθρωπολογία</h3>
                         <div class="resources">
-                            <a href="https://anthropologyreview.org/category/anthropology-glossary-of-terms/" class="resource-link" target="_blank">
-                                <span class="resource-name">Anthropological Glossary</span><span class="lang-tag">EN</span>
+                            <a href="https://anthropologyreview.org/category/anthropology-glossary-of-terms/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Anthropological Glossary</span>
+                                <span class="lang-tag">EN</span>
                             </a>
                         </div>
                     </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Γλωσσολογία</h3>
+                        <div class="resources">
+                            <a href="https://glossary.sil.org/term" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Glossary Of Linguistics</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Θρησκειολογία</h3>
+                        <div class="resources">
+                            <a href="https://religionprogram.ecu.edu/wp-content/pv-uploads/sites/128/2019/08/SACRE-World_Religions_Glossary.pdf" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">World Religions Glossary</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="subcategory">
+                        <h3 class="subcategory-title">Κοινωνιολογία</h3>
+                        <div class="resources">
+                            <a href="https://freesociologybooks.com/Introduction_To_Sociology/21_Glossary.php" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Glossary Of Sociology Terms</span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="subcategory">
                         <h3 class="subcategory-title">Ψυχολογία</h3>
                         <div class="resources">
-                            <a href="https://dictionary.apa.org/" class="resource-link" target="_blank">
-                                <span class="resource-name">Psychology Dictionary</span><span class="lang-tag">EN</span>
+                            <a href="https://dictionary.apa.org/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                                <span class="resource-name">Psychology Dictionary</span>
+                                <span class="lang-tag">EN</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- ΙΣΤΟΤΟΠΟΙ - Ξεχωριστή κατηγορία, κάτω από τις Κοινωνικές Επιστήμες (δεξιά στήλη) -->
                 <div class="category">
                     <h2 class="category-title">Ιστότοποι</h2>
                     <div class="simple-links">
-                        <a href="http://vos.ucsb.edu/" class="resource-link" target="_blank">
-                            <span class="resource-name">Voice Of The Shuttle</span><span class="lang-tag">EN</span>
+                        <a href="http://vos.ucsb.edu/" class="resource-link" target="_blank" rel="noopener noreferrer">
+                            <span class="resource-name">Voice Of The Shuttle</span>
+                            <span class="lang-tag">EN</span>
                         </a>
-                        <a href="https://iate.europa.eu/home" class="resource-link" target="_blank">
-                            <span class="resource-name">IATE – Terminology For Europe</span><span class="lang-tag">EN</span>
+                        <a href="https://www.translatum.gr/forum/index.php?PHPSESSID=a7f08f58d89ce00a76816a6a2ee8e9a1&board=37.0" class="resource-link" target="_blank" rel="noopener noreferrer">
+                            <span class="resource-name">Translator Resources – Γλωσσάρια Translatum</span>
+                            <span class="lang-tag">EN & GR</span>
+                        </a>
+                        <a href="https://iate.europa.eu/home" class="resource-link" target="_blank" rel="noopener noreferrer">
+                            <span class="resource-name">IATE – InterActive Terminology For Europe</span>
+                            <span class="lang-tag">EN</span>
                         </a>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </div> <footer>
-            <p>Made with <span class="heart">❤️</span> for <a href="https://www.metafrasi.edu.gr/" target="_blank">meta|φραση</a> by <a href="#" target="_blank">Christine Vasileiadou</a>, 2026</p>
+        <footer>
+            <p>Made with <span class="heart">❤️</span> for <a href="https://www.metafrasi.edu.gr/" target="_blank">meta|φραση</a> by <a href="https://www.facebook.com/transparent.ballerina.5/" target="_blank">Christine Vasileiadou</a>, 2026</p>
         </footer>
     </div>
 </body>
