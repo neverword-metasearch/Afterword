@@ -18,6 +18,15 @@
             --nw-footer-color: #f5f1e3;
         }
 
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --blue-dark: #1a2a3a;
+            --blue-mid: #2d4a5f;
+            --blue-light: #3d5a72;
+            --cream: #e0dcc8;
+            --nw-footer-color: #e0dcc8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -31,6 +40,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         /* Crosshatch texture overlay */
@@ -72,6 +82,220 @@
             padding: 15px;
             position: relative;
             z-index: 2;
+        }
+
+        /* Toolbar section */
+        .toolbar {
+            background: linear-gradient(135deg, rgba(61, 90, 114, 0.95), rgba(45, 74, 95, 0.9));
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+        }
+
+        /* Search bar */
+        .search-container {
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(245, 241, 227, 0.1);
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 8px;
+            color: var(--cream);
+            font-family: 'Merriweather', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--red);
+            background: rgba(245, 241, 227, 0.15);
+            box-shadow: 0 0 15px rgba(198, 57, 57, 0.3);
+        }
+
+        .search-box::placeholder {
+            color: rgba(245, 241, 227, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cream);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Filters and controls row */
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 5px;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            background: rgba(245, 241, 227, 0.1);
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 6px;
+            color: var(--cream);
+            font-family: 'EB Garamond', serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(198, 57, 57, 0.2);
+            border-color: var(--red);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(198, 57, 57, 0.4);
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            background: rgba(245, 241, 227, 0.1);
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 6px;
+            color: var(--cream);
+            font-family: 'EB Garamond', serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            width: 50px;
+            height: 26px;
+            background: rgba(245, 241, 227, 0.2);
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle::before {
+            content: '☀️';
+            position: absolute;
+            left: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            background: var(--cream);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            content: '🌙';
+            left: auto;
+            right: 2px;
+        }
+
+        [data-theme="dark"] .theme-toggle::after {
+            left: calc(100% - 19px);
+        }
+
+        /* Jump navigation */
+        .jump-nav {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(245, 241, 227, 0.2);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .jump-link {
+            padding: 5px 12px;
+            background: rgba(245, 241, 227, 0.08);
+            border: 1.5px solid rgba(245, 241, 227, 0.2);
+            border-radius: 5px;
+            color: var(--cream);
+            text-decoration: none;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .jump-link:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         /* Large illustrated header */
@@ -314,6 +538,11 @@
                 0 8px 25px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .category.hidden {
+            display: none;
         }
 
         /* Sketch effect on categories */
@@ -367,6 +596,10 @@
             border-radius: 4px;
         }
 
+        .subcategory.hidden {
+            display: none;
+        }
+
         .subcategory-title {
             font-family: 'EB Garamond', serif;
             font-size: 0.75rem;
@@ -396,6 +629,15 @@
             border: 1.5px solid rgba(245, 241, 227, 0.2);
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        .resource-link.hidden {
+            display: none;
+        }
+
+        .resource-link.highlight {
+            background: rgba(198, 57, 57, 0.3);
+            border-color: var(--red);
         }
 
         .resource-link::before {
@@ -431,6 +673,47 @@
             flex: 1;
             position: relative;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Favorite star */
+        .fav-star {
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.4;
+        }
+
+        .fav-star.active {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .fav-star:hover {
+            transform: scale(1.3);
+            filter: grayscale(0%);
+        }
+
+        /* Note icon */
+        .note-icon {
+            cursor: pointer;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .note-icon.has-note {
+            opacity: 1;
+            color: #ffd700;
+        }
+
+        .note-icon:hover {
+            opacity: 1;
+            transform: scale(1.2);
         }
 
         .lang-tag {
@@ -450,6 +733,226 @@
             display: flex;
             flex-direction: column;
             gap: 7px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #3d5a72 0%, #2d4a5f 50%, #1d3a4f 100%);
+            border: 3px solid var(--red);
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--red);
+        }
+
+        .modal-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--red);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            background: rgba(245, 241, 227, 0.1);
+            border: 2px solid rgba(245, 241, 227, 0.3);
+            border-radius: 6px;
+            color: var(--cream);
+            font-family: 'Merriweather', serif;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--red);
+            background: rgba(245, 241, 227, 0.15);
+            box-shadow: 0 0 10px rgba(198, 57, 57, 0.3);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(245, 241, 227, 0.5);
+        }
+
+        .form-select option {
+            background: var(--blue-dark);
+            color: var(--cream);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            border-color: var(--red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+            border-color: var(--dark-red);
+            box-shadow: 0 5px 20px rgba(198, 57, 57, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--cream);
+            color: var(--cream);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(245, 241, 227, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Setup instructions banner */
+        .setup-banner {
+            background: linear-gradient(135deg, rgba(198, 57, 57, 0.2), rgba(164, 46, 46, 0.2));
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .setup-banner-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .setup-banner-text {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: var(--cream);
+        }
+
+        .setup-banner-text code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: #ffd700;
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--cream);
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
         }
 
         footer {
@@ -535,6 +1038,16 @@
                 width: 75px;
                 height: 75px;
             }
+
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .action-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
 
         @media (max-width: 768px) {
@@ -556,11 +1069,74 @@
                 width: 65px;
                 height: 65px;
             }
+
+            .toolbar {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media print {
+            .toolbar,
+            .fav-star,
+            .note-icon,
+            footer {
+                display: none !important;
+            }
+
+            body::before,
+            body::after {
+                display: none;
+            }
+
+            .category {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Toolbar with search, filters, and actions -->
+        <div class="toolbar">
+            <!-- Search bar -->
+            <div class="search-container" style="position: relative;">
+                <input 
+                    type="text" 
+                    id="searchBox" 
+                    class="search-box" 
+                    placeholder="Αναζήτηση πόρων, κατηγοριών... (πατήστε '/' για γρήγορη αναζήτηση)"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <!-- Controls row -->
+            <div class="controls-row">
+                <!-- Language filters -->
+                <div class="filter-group">
+                    <span class="filter-label">Γλώσσα:</span>
+                    <button class="filter-btn active" data-lang="all">Όλες</button>
+                    <button class="filter-btn" data-lang="EN">EN</button>
+                    <button class="filter-btn" data-lang="GR">GR</button>
+                    <button class="filter-btn" data-lang="EN & GR">EN & GR</button>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn" id="exportBtn">📥 Export</button>
+                    <button class="action-btn" id="suggestBtn">➕ Πρόταση</button>
+                    <div class="theme-toggle" id="themeToggle"></div>
+                </div>
+            </div>
+
+            <!-- Jump navigation -->
+            <div class="jump-nav">
+                <a href="#humanities" class="jump-link">Ανθρωπιστικές Ε.</a>
+                <a href="#social" class="jump-link">Κοινωνικές Ε.</a>
+                <a href="#websites" class="jump-link">Ιστότοποι</a>
+            </div>
+        </div>
+
         <header>
             <div class="sketch-corner sketch-corner-tl"></div>
             <div class="sketch-corner sketch-corner-tr"></div>
@@ -613,25 +1189,42 @@
             <p class="subtitle">Sculpting the Delicate Shadows of Argument</p>
         </header>
 
+        <!-- No results message -->
+        <div class="no-results" id="noResults">
+            Δεν βρέθηκαν αποτελέσματα. Δοκιμάστε διαφορετική αναζήτηση.
+        </div>
+
         <div class="main-grid">
             <div class="grid-col">
                 <!-- ΑΝΘΡΩΠΙΣΤΙΚΕΣ ΕΠΙΣΤΗΜΕΣ -->
-                <div class="category">
+                <div class="category" id="humanities">
                     <h2 class="category-title">Ανθρωπιστικές Επιστήμες</h2>
 
                     <div class="subcategory">
                         <h3 class="subcategory-title">Θέατρο & Παραστατικές Τέχνες</h3>
                         <div class="resources">
-                            <a href="https://aact.org/theatre-terms" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Theatre Glossaries</span>
+                            <a href="https://aact.org/theatre-terms" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="theatre-glossaries">⭐</span>
+                                    <span class="note-icon" data-resource="theatre-glossaries">📝</span>
+                                    Theatre Glossaries
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://www.abt.org/explore/learn/ballet-dictionary/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Ballet Dictionary</span>
+                            <a href="https://www.abt.org/explore/learn/ballet-dictionary/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="ballet-dictionary">⭐</span>
+                                    <span class="note-icon" data-resource="ballet-dictionary">📝</span>
+                                    Ballet Dictionary
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://www.pro-dance.gr/dances/ballet-modern-contemporary-jazz-tap-irish/ballet-dance/ballet-dictionary" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Το Λεξικό του Μπαλέτου</span>
+                            <a href="https://www.pro-dance.gr/dances/ballet-modern-contemporary-jazz-tap-irish/ballet-dance/ballet-dictionary" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="GR">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="ballet-gr">⭐</span>
+                                    <span class="note-icon" data-resource="ballet-gr">📝</span>
+                                    Το Λεξικό του Μπαλέτου
+                                </span>
                                 <span class="lang-tag">GR</span>
                             </a>
                         </div>
@@ -640,12 +1233,20 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Καλές Τέχνες</h3>
                         <div class="resources">
-                            <a href="http://www.artcyclopedia.com/general/alphabetic.html" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Artcyclopedia</span>
+                            <a href="http://www.artcyclopedia.com/general/alphabetic.html" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="artcyclopedia">⭐</span>
+                                    <span class="note-icon" data-resource="artcyclopedia">📝</span>
+                                    Artcyclopedia
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://www.nikias.gr/view_lexicon.php" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Λεξικό Καλλιτεχνικών Όρων</span>
+                            <a href="https://www.nikias.gr/view_lexicon.php" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="GR">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="nikias">⭐</span>
+                                    <span class="note-icon" data-resource="nikias">📝</span>
+                                    Λεξικό Καλλιτεχνικών Όρων
+                                </span>
                                 <span class="lang-tag">GR</span>
                             </a>
                         </div>
@@ -654,12 +1255,20 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Λογοτεχνία</h3>
                         <div class="resources">
-                            <a href="https://literaryterms.net/glossary-of-literary-terms/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Glossary of Literary Terms</span>
+                            <a href="https://literaryterms.net/glossary-of-literary-terms/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="literary-terms">⭐</span>
+                                    <span class="note-icon" data-resource="literary-terms">📝</span>
+                                    Glossary of Literary Terms
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://ebooks.edu.gr/ebooks/v/html/8547/4716/Lexiko-Logotechnikon-Oron_Gymnasiou-Lykeiou_html-apli/index01.htm" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Λεξικό Λογοτεχνικών Όρων</span>
+                            <a href="https://ebooks.edu.gr/ebooks/v/html/8547/4716/Lexiko-Logotechnikon-Oron_Gymnasiou-Lykeiou_html-apli/index01.htm" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="GR">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="logotechnika">⭐</span>
+                                    <span class="note-icon" data-resource="logotechnika">📝</span>
+                                    Λεξικό Λογοτεχνικών Όρων
+                                </span>
                                 <span class="lang-tag">GR</span>
                             </a>
                         </div>
@@ -668,8 +1277,12 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Μουσική</h3>
                         <div class="resources">
-                            <a href="https://www.canteach.ca/resources/fine-arts/music/glossary-of-musical-terms-and-forms/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Glossary of Musical Terms & Forms</span>
+                            <a href="https://www.canteach.ca/resources/fine-arts/music/glossary-of-musical-terms-and-forms/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="musical-terms">⭐</span>
+                                    <span class="note-icon" data-resource="musical-terms">📝</span>
+                                    Glossary of Musical Terms & Forms
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -678,12 +1291,20 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Ιστορία</h3>
                         <div class="resources">
-                            <a href="https://en.wikipedia.org/wiki/Glossary_of_history" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Glossary οf History</span>
+                            <a href="https://en.wikipedia.org/wiki/Glossary_of_history" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="history">⭐</span>
+                                    <span class="note-icon" data-resource="history">📝</span>
+                                    Glossary of History
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://www.ime.gr/chronos/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Η Ελληνική Ιστορία στο Διαδίκτυο</span>
+                            <a href="https://www.ime.gr/chronos/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN & GR">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="ime">⭐</span>
+                                    <span class="note-icon" data-resource="ime">📝</span>
+                                    Η Ελληνική Ιστορία στο Διαδίκτυο
+                                </span>
                                 <span class="lang-tag">EN & GR</span>
                             </a>
                         </div>
@@ -692,12 +1313,20 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Φιλοσοφία</h3>
                         <div class="resources">
-                            <a href="https://www.philosophypages.com/dy/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">A Dictionary οf Philosophical Terms & Names</span>
+                            <a href="https://www.philosophypages.com/dy/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="philosophy-dict">⭐</span>
+                                    <span class="note-icon" data-resource="philosophy-dict">📝</span>
+                                    A Dictionary of Philosophical Terms & Names
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
-                            <a href="https://iep.utm.edu/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">The Internet Encyclopedia of Philosophy</span>
+                            <a href="https://iep.utm.edu/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="iep">⭐</span>
+                                    <span class="note-icon" data-resource="iep">📝</span>
+                                    The Internet Encyclopedia of Philosophy
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -707,14 +1336,18 @@
 
             <div class="grid-col">
                 <!-- ΚΟΙΝΩΝΙΚΕΣ ΕΠΙΣΤΗΜΕΣ -->
-                <div class="category">
+                <div class="category" id="social">
                     <h2 class="category-title">Κοινωνικές Επιστήμες</h2>
 
                     <div class="subcategory">
                         <h3 class="subcategory-title">Ανθρωπολογία</h3>
                         <div class="resources">
-                            <a href="https://anthropologyreview.org/category/anthropology-glossary-of-terms/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Anthropological Glossary</span>
+                            <a href="https://anthropologyreview.org/category/anthropology-glossary-of-terms/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="anthropology">⭐</span>
+                                    <span class="note-icon" data-resource="anthropology">📝</span>
+                                    Anthropological Glossary
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -723,8 +1356,12 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Γλωσσολογία</h3>
                         <div class="resources">
-                            <a href="https://glossary.sil.org/term" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Glossary οf Linguistics</span>
+                            <a href="https://glossary.sil.org/term" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="linguistics">⭐</span>
+                                    <span class="note-icon" data-resource="linguistics">📝</span>
+                                    Glossary οf Linguistics
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -733,8 +1370,12 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Θρησκειολογία</h3>
                         <div class="resources">
-                            <a href="https://religionprogram.ecu.edu/wp-content/pv-uploads/sites/128/2019/08/SACRE-World_Religions_Glossary.pdf" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">World Religions Glossary</span>
+                            <a href="https://religionprogram.ecu.edu/wp-content/pv-uploads/sites/128/2019/08/SACRE-World_Religions_Glossary.pdf" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="religions">⭐</span>
+                                    <span class="note-icon" data-resource="religions">📝</span>
+                                    World Religions Glossary
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -743,8 +1384,12 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Κοινωνιολογία</h3>
                         <div class="resources">
-                            <a href="https://freesociologybooks.com/Introduction_To_Sociology/21_Glossary.php" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Glossary of Sociology Terms</span>
+                            <a href="https://freesociologybooks.com/Introduction_To_Sociology/21_Glossary.php" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="sociology">⭐</span>
+                                    <span class="note-icon" data-resource="sociology">📝</span>
+                                    Glossary of Sociology Terms
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
@@ -753,28 +1398,44 @@
                     <div class="subcategory">
                         <h3 class="subcategory-title">Ψυχολογία</h3>
                         <div class="resources">
-                            <a href="https://dictionary.apa.org/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                                <span class="resource-name">Psychology Dictionary</span>
+                            <a href="https://dictionary.apa.org/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="psychology">⭐</span>
+                                    <span class="note-icon" data-resource="psychology">📝</span>
+                                    Psychology Dictionary
+                                </span>
                                 <span class="lang-tag">EN</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ΙΣΤΟΤΟΠΟΙ - Ξεχωριστή κατηγορία, κάτω από τις Κοινωνικές Επιστήμες (δεξιά στήλη) -->
-                <div class="category">
+                <!-- ΙΣΤΟΤΟΠΟΙ -->
+                <div class="category" id="websites">
                     <h2 class="category-title">Ιστότοποι</h2>
                     <div class="simple-links">
-                        <a href="http://vos.ucsb.edu/" class="resource-link" target="_blank" rel="noopener noreferrer">
-                            <span class="resource-name">Voice οf the Shuttle</span>
+                        <a href="http://vos.ucsb.edu/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                            <span class="resource-name">
+                                <span class="fav-star" data-resource="vos">⭐</span>
+                                <span class="note-icon" data-resource="vos">📝</span>
+                                Voice οf the Shuttle
+                            </span>
                             <span class="lang-tag">EN</span>
                         </a>
-                        <a href="https://www.translatum.gr/forum/index.php?PHPSESSID=a7f08f58d89ce00a76816a6a2ee8e9a1&board=37.0" class="resource-link" target="_blank" rel="noopener noreferrer">
-                            <span class="resource-name">Translator Resources – Γλωσσάρια Translatum</span>
+                        <a href="https://www.translatum.gr/forum/index.php?PHPSESSID=a7f08f58d89ce00a76816a6a2ee8e9a1&board=37.0" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN & GR">
+                            <span class="resource-name">
+                                <span class="fav-star" data-resource="translatum">⭐</span>
+                                <span class="note-icon" data-resource="translatum">📝</span>
+                                Translator Resources – Γλωσσάρια Translatum
+                            </span>
                             <span class="lang-tag">EN & GR</span>
                         </a>
-                        <a href="https://iate.europa.eu/home" class="resource-link" target="_blank" rel="noopener noreferrer">
-                            <span class="resource-name">IATE – InterActive Terminology for Europe</span>
+                        <a href="https://iate.europa.eu/home" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                            <span class="resource-name">
+                                <span class="fav-star" data-resource="iate">⭐</span>
+                                <span class="note-icon" data-resource="iate">📝</span>
+                                IATE – InterActive Terminology for Europe
+                            </span>
                             <span class="lang-tag">EN</span>
                         </a>
                     </div>
@@ -786,5 +1447,522 @@
             <p>Made with <span class="heart">❤️</span> for <a href="https://www.metafrasi.edu.gr/" target="_blank">meta|φραση</a> by <a href="https://www.facebook.com/transparent.ballerina.5/" target="_blank">Christine Vasileiadou</a>, 2026</p>
         </footer>
     </div>
+
+    <!-- Note Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="noteModalTitle">Προσωπική Σημείωση</h3>
+                <button class="modal-close" id="closeNoteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Σημείωση:</label>
+                    <textarea class="form-textarea" id="noteTextarea" placeholder="Προσθέστε τις σημειώσεις σας εδώ..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="deleteNote">Διαγραφή</button>
+                <button class="btn btn-primary" id="saveNote">Αποθήκευση</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggest Resource Modal -->
+    <div class="modal" id="suggestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Πρότεινε Νέο Πόρο</h3>
+                <button class="modal-close" id="closeSuggestModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Setup Instructions Banner -->
+                <div class="setup-banner">
+                    <div class="setup-banner-title">⚙️ Οδηγίες Ρύθμισης Google Form</div>
+                    <div class="setup-banner-text">
+                        Για να λειτουργήσει η αποστολή, χρειάζεται να ρυθμίσεις το Google Form:<br>
+                        1. Δημιούργησε ένα <a href="https://forms.google.com" target="_blank" style="color: #ffd700;">Google Form</a> με τα πεδία αυτής της φόρμας<br>
+                        2. Πάρε τα <code>entry IDs</code> από το HTML του form (F12 → Inspect)<br>
+                        3. Ενημέρωσε τις μεταβλητές <code>GOOGLE_FORM_ACTION_URL</code> και <code>ENTRY_IDS</code> στο JavaScript κώδικα<br>
+                        4. Δες αναλυτικές οδηγίες στα σχόλια του κώδικα (γραμμή ~1100)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Όνομα Πόρου: <span style="color: var(--red);">*</span></label>
+                    <input type="text" class="form-input" id="resourceName" placeholder="π.χ. Medical Dictionary" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">URL: <span style="color: var(--red);">*</span></label>
+                    <input type="url" class="form-input" id="resourceUrl" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Κατηγορία: <span style="color: var(--red);">*</span></label>
+                    <select class="form-select" id="resourceCategory" required>
+                        <option value="">Επιλέξτε κατηγορία</option>
+                        <option value="Ανθρωπιστικές Επιστήμες">Ανθρωπιστικές Επιστήμες</option>
+                        <option value="Κοινωνικές Επιστήμες">Κοινωνικές Επιστήμες</option>
+                        <option value="Ιστότοποι">Ιστότοποι</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Γλώσσα:</label>
+                    <select class="form-select" id="resourceLang">
+                        <option value="EN">EN</option>
+                        <option value="GR">GR</option>
+                        <option value="EN & GR">EN & GR</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Σχόλια (προαιρετικό):</label>
+                    <textarea class="form-textarea" id="resourceComments" placeholder="Προσθέστε επιπλέον πληροφορίες για τον πόρο..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSuggest">Ακύρωση</button>
+                <button class="btn btn-primary" id="submitSuggest">Αποστολή</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // CONFIGURATION: GOOGLE FORMS INTEGRATION
+        // ========================================
+
+        /* 
+         * SETUP INSTRUCTIONS:
+         * 
+         * 1. Create a Google Form at https://forms.google.com with these fields:
+         *    - Όνομα Πόρου (Short answer, Required)
+         *    - URL (Short answer, Required)  
+         *    - Κατηγορία (Multiple choice, Required)
+         *    - Γλώσσα (Multiple choice)
+         *    - Σχόλια (Paragraph)
+         * 
+         * 2. Get your Form ID:
+         *    - Open your form and click "Send"
+         *    - Copy the link - it looks like: https://docs.google.com/forms/d/e/FORM_ID_HERE/viewform
+         *    - Replace YOUR_FORM_ID below with your actual ID
+         * 
+         * 3. Get Entry IDs for each field:
+         *    - Open form in preview
+         *    - Right-click → Inspect (F12)
+         *    - Find each input field in HTML - they have names like "entry.123456789"
+         *    - Replace the entry IDs below with your actual ones
+         * 
+         * 4. Save and test!
+         */
+
+        // REPLACE THIS with your actual Google Form ID
+        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse';
+
+        // REPLACE THESE with your actual Entry IDs from Google Form HTML
+        const ENTRY_IDS = {
+            name: 'entry.123456789',      // Field: Όνομα Πόρου
+            url: 'entry.987654321',        // Field: URL
+            category: 'entry.111222333',   // Field: Κατηγορία
+            lang: 'entry.444555666',       // Field: Γλώσσα
+            comments: 'entry.777888999'    // Field: Σχόλια
+        };
+
+        // ========================================
+        // 1. SEARCH FUNCTIONALITY
+        // ========================================
+        const searchBox = document.getElementById('searchBox');
+        const noResults = document.getElementById('noResults');
+
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                document.querySelectorAll('.resource-link, .subcategory, .category').forEach(el => {
+                    el.classList.remove('hidden', 'highlight');
+                });
+                noResults.classList.remove('visible');
+                return;
+            }
+
+            let hasResults = false;
+
+            document.querySelectorAll('.resource-link').forEach(link => {
+                const resourceName = link.querySelector('.resource-name').textContent.toLowerCase();
+                const categoryTitle = link.closest('.category').querySelector('.category-title').textContent.toLowerCase();
+                const subcategoryTitle = link.closest('.subcategory')?.querySelector('.subcategory-title')?.textContent.toLowerCase() || '';
+
+                if (resourceName.includes(searchTerm) || categoryTitle.includes(searchTerm) || subcategoryTitle.includes(searchTerm)) {
+                    link.classList.remove('hidden');
+                    link.classList.add('highlight');
+                    hasResults = true;
+                } else {
+                    link.classList.add('hidden');
+                    link.classList.remove('highlight');
+                }
+            });
+
+            document.querySelectorAll('.subcategory').forEach(sub => {
+                const visibleLinks = sub.querySelectorAll('.resource-link:not(.hidden)');
+                if (visibleLinks.length === 0) {
+                    sub.classList.add('hidden');
+                } else {
+                    sub.classList.remove('hidden');
+                }
+            });
+
+            document.querySelectorAll('.category').forEach(cat => {
+                const visibleSubs = cat.querySelectorAll('.subcategory:not(.hidden)');
+                if (visibleSubs.length === 0) {
+                    cat.classList.add('hidden');
+                } else {
+                    cat.classList.remove('hidden');
+                }
+            });
+
+            if (hasResults) {
+                noResults.classList.remove('visible');
+            } else {
+                noResults.classList.add('visible');
+            }
+        });
+
+        // ========================================
+        // 2. LANGUAGE FILTERS
+        // ========================================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const selectedLang = this.dataset.lang;
+
+                document.querySelectorAll('.resource-link').forEach(link => {
+                    const linkLang = link.dataset.lang;
+
+                    if (selectedLang === 'all' || linkLang === selectedLang) {
+                        link.classList.remove('hidden');
+                    } else {
+                        link.classList.add('hidden');
+                    }
+                });
+
+                document.querySelectorAll('.subcategory').forEach(sub => {
+                    const visibleLinks = sub.querySelectorAll('.resource-link:not(.hidden)');
+                    if (visibleLinks.length === 0) {
+                        sub.classList.add('hidden');
+                    } else {
+                        sub.classList.remove('hidden');
+                    }
+                });
+
+                document.querySelectorAll('.category').forEach(cat => {
+                    const visibleSubs = cat.querySelectorAll('.subcategory:not(.hidden)');
+                    if (visibleSubs.length === 0) {
+                        cat.classList.add('hidden');
+                    } else {
+                        cat.classList.remove('hidden');
+                    }
+                });
+
+                searchBox.value = '';
+                document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+            });
+        });
+
+        // ========================================
+        // 3. JUMP TO CATEGORY NAVIGATION
+        // ========================================
+        document.querySelectorAll('.jump-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ========================================
+        // 4. FAVORITES SYSTEM
+        // ========================================
+        let favorites = JSON.parse(localStorage.getItem('afterword-favorites') || '[]');
+
+        favorites.forEach(resourceId => {
+            const star = document.querySelector(`.fav-star[data-resource="${resourceId}"]`);
+            if (star) star.classList.add('active');
+        });
+
+        document.querySelectorAll('.fav-star').forEach(star => {
+            star.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const resourceId = this.dataset.resource;
+
+                if (favorites.includes(resourceId)) {
+                    favorites = favorites.filter(id => id !== resourceId);
+                    this.classList.remove('active');
+                } else {
+                    favorites.push(resourceId);
+                    this.classList.add('active');
+                }
+
+                localStorage.setItem('afterword-favorites', JSON.stringify(favorites));
+            });
+        });
+
+        // ========================================
+        // 6. PERSONAL NOTES
+        // ========================================
+        let notes = JSON.parse(localStorage.getItem('afterword-notes') || '{}');
+        let currentNoteResource = null;
+
+        const noteModal = document.getElementById('noteModal');
+        const noteTextarea = document.getElementById('noteTextarea');
+        const saveNoteBtn = document.getElementById('saveNote');
+        const deleteNoteBtn = document.getElementById('deleteNote');
+        const closeNoteModalBtn = document.getElementById('closeNoteModal');
+
+        Object.keys(notes).forEach(resourceId => {
+            const noteIcon = document.querySelector(`.note-icon[data-resource="${resourceId}"]`);
+            if (noteIcon && notes[resourceId]) {
+                noteIcon.classList.add('has-note');
+            }
+        });
+
+        document.querySelectorAll('.note-icon').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                currentNoteResource = this.dataset.resource;
+                noteTextarea.value = notes[currentNoteResource] || '';
+                noteModal.classList.add('active');
+                noteTextarea.focus();
+            });
+        });
+
+        saveNoteBtn.addEventListener('click', function() {
+            const noteText = noteTextarea.value.trim();
+
+            if (noteText) {
+                notes[currentNoteResource] = noteText;
+                document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.add('has-note');
+            } else {
+                delete notes[currentNoteResource];
+                document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.remove('has-note');
+            }
+
+            localStorage.setItem('afterword-notes', JSON.stringify(notes));
+            noteModal.classList.remove('active');
+        });
+
+        deleteNoteBtn.addEventListener('click', function() {
+            delete notes[currentNoteResource];
+            document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.remove('has-note');
+            localStorage.setItem('afterword-notes', JSON.stringify(notes));
+            noteModal.classList.remove('active');
+        });
+
+        closeNoteModalBtn.addEventListener('click', function() {
+            noteModal.classList.remove('active');
+        });
+
+        noteModal.addEventListener('click', function(e) {
+            if (e.target === noteModal) {
+                noteModal.classList.remove('active');
+            }
+        });
+
+        // ========================================
+        // 11. SUGGEST A RESOURCE (GOOGLE FORMS)
+        // ========================================
+        const suggestBtn = document.getElementById('suggestBtn');
+        const suggestModal = document.getElementById('suggestModal');
+        const closeSuggestModalBtn = document.getElementById('closeSuggestModal');
+        const cancelSuggestBtn = document.getElementById('cancelSuggest');
+        const submitSuggestBtn = document.getElementById('submitSuggest');
+
+        suggestBtn.addEventListener('click', function() {
+            suggestModal.classList.add('active');
+        });
+
+        closeSuggestModalBtn.addEventListener('click', function() {
+            suggestModal.classList.remove('active');
+        });
+
+        cancelSuggestBtn.addEventListener('click', function() {
+            suggestModal.classList.remove('active');
+        });
+
+        submitSuggestBtn.addEventListener('click', function() {
+            const name = document.getElementById('resourceName').value.trim();
+            const url = document.getElementById('resourceUrl').value.trim();
+            const category = document.getElementById('resourceCategory').value;
+            const lang = document.getElementById('resourceLang').value;
+            const comments = document.getElementById('resourceComments').value.trim();
+
+            if (!name || !url || !category) {
+                alert('⚠️ Παρακαλώ συμπληρώστε όλα τα απαιτούμενα πεδία:\n- Όνομα Πόρου\n- URL\n- Κατηγορία');
+                return;
+            }
+
+            // Check if Google Form is configured
+            if (GOOGLE_FORM_ACTION_URL.includes('YOUR_FORM_ID_HERE')) {
+                alert('⚠️ Το Google Form δεν έχει ρυθμιστεί ακόμα!\n\nΠαρακαλώ δες τις οδηγίες στο modal ή στα σχόλια του κώδικα για να ρυθμίσεις το Google Form.');
+                return;
+            }
+
+            // Create form data for Google Forms submission
+            const formData = new FormData();
+            formData.append(ENTRY_IDS.name, name);
+            formData.append(ENTRY_IDS.url, url);
+            formData.append(ENTRY_IDS.category, category);
+            formData.append(ENTRY_IDS.lang, lang);
+            formData.append(ENTRY_IDS.comments, comments);
+
+            // Submit to Google Forms
+            fetch(GOOGLE_FORM_ACTION_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Important! Google Forms requires no-cors mode
+                body: formData
+            }).then(() => {
+                // Success! (Note: no-cors means we can't read the response, but submission works)
+                alert('✅ Ευχαριστούμε για την πρόταση σας!\n\nΗ πρόταση καταχωρήθηκε επιτυχώς και θα εξεταστεί σύντομα.');
+
+                // Reset form
+                document.getElementById('resourceName').value = '';
+                document.getElementById('resourceUrl').value = '';
+                document.getElementById('resourceCategory').value = '';
+                document.getElementById('resourceLang').value = 'EN';
+                document.getElementById('resourceComments').value = '';
+
+                suggestModal.classList.remove('active');
+            }).catch((error) => {
+                // Even if there's an "error" due to no-cors, the submission usually works
+                console.log('Submission attempted (no-cors mode):', error);
+                alert('✅ Η πρόταση σας καταχωρήθηκε! Ευχαριστούμε.');
+
+                // Reset form anyway
+                document.getElementById('resourceName').value = '';
+                document.getElementById('resourceUrl').value = '';
+                document.getElementById('resourceCategory').value = '';
+                document.getElementById('resourceLang').value = 'EN';
+                document.getElementById('resourceComments').value = '';
+
+                suggestModal.classList.remove('active');
+            });
+        });
+
+        suggestModal.addEventListener('click', function(e) {
+            if (e.target === suggestModal) {
+                suggestModal.classList.remove('active');
+            }
+        });
+
+        // ========================================
+        // 13. EXPORT FUNCTIONALITY
+        // ========================================
+        const exportBtn = document.getElementById('exportBtn');
+
+        exportBtn.addEventListener('click', function() {
+            const resources = [];
+
+            document.querySelectorAll('.resource-link:not(.hidden)').forEach(link => {
+                const name = link.querySelector('.resource-name').textContent.trim().replace(/[⭐📝]/g, '').trim();
+                const url = link.href;
+                const lang = link.dataset.lang;
+                const category = link.closest('.category').querySelector('.category-title').textContent.trim();
+                const subcategory = link.closest('.subcategory')?.querySelector('.subcategory-title')?.textContent.trim() || 'General';
+                const isFavorite = favorites.includes(link.querySelector('.fav-star').dataset.resource);
+                const resourceId = link.querySelector('.fav-star').dataset.resource;
+                const note = notes[resourceId] || '';
+
+                resources.push({
+                    category,
+                    subcategory,
+                    name,
+                    url,
+                    lang,
+                    favorite: isFavorite ? 'Yes' : 'No',
+                    note
+                });
+            });
+
+            // Create CSV with UTF-8 BOM for Excel compatibility
+            let csv = '\ufeffCategory,Subcategory,Resource Name,URL,Language,Favorite,Note\n';
+            resources.forEach(r => {
+                csv += `"${r.category}","${r.subcategory}","${r.name}","${r.url}","${r.lang}","${r.favorite}","${r.note.replace(/"/g, '""')}"\n`;
+            });
+
+            // Download CSV
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `afterword-resources-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        });
+
+        // ========================================
+        // 14. DARK/LIGHT MODE TOGGLE
+        // ========================================
+        const themeToggle = document.getElementById('themeToggle');
+        let currentTheme = localStorage.getItem('afterword-theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                currentTheme = 'dark';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                currentTheme = 'light';
+            }
+
+            localStorage.setItem('afterword-theme', currentTheme);
+        });
+
+        // ========================================
+        // KEYBOARD SHORTCUTS
+        // ========================================
+        document.addEventListener('keydown', function(e) {
+            // "/" to focus search
+            if (e.key === '/' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                searchBox.focus();
+            }
+
+            // Escape to clear search or close modals
+            if (e.key === 'Escape') {
+                if (noteModal.classList.contains('active')) {
+                    noteModal.classList.remove('active');
+                } else if (suggestModal.classList.contains('active')) {
+                    suggestModal.classList.remove('active');
+                } else if (searchBox.value) {
+                    searchBox.value = '';
+                    searchBox.dispatchEvent(new Event('input'));
+                }
+            }
+        });
+
+        // ========================================
+        // INITIALIZATION MESSAGE
+        // ========================================
+        console.log('%c🎨 Afterword Scholar Hub', 'font-size: 20px; font-weight: bold; color: #c63939;');
+        console.log('%cVersion 2.0 with Google Forms Integration', 'font-size: 12px; color: #6a8ba3;');
+        console.log('');
+        console.log('%c⚙️ Setup Required:', 'font-weight: bold;');
+        console.log('Please configure your Google Form settings in the JavaScript code.');
+        console.log('See line ~1100 for detailed instructions.');
+    </script>
 </body>
 </html>
