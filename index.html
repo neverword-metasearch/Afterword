@@ -761,8 +761,6 @@
             padding: 25px;
             max-width: 600px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
             position: relative;
         }
@@ -904,40 +902,6 @@
         .btn-secondary:hover {
             background: rgba(245, 241, 227, 0.1);
             transform: translateY(-2px);
-        }
-
-        /* Setup instructions banner */
-        .setup-banner {
-            background: linear-gradient(135deg, rgba(198, 57, 57, 0.2), rgba(164, 46, 46, 0.2));
-            border: 2px solid var(--red);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .setup-banner-title {
-            font-family: 'EB Garamond', serif;
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--red);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .setup-banner-text {
-            font-size: 0.75rem;
-            line-height: 1.5;
-            color: var(--cream);
-        }
-
-        .setup-banner-text code {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.7rem;
-            color: #ffd700;
         }
 
         /* No results message */
@@ -1105,7 +1069,7 @@
                     type="text" 
                     id="searchBox" 
                     class="search-box" 
-                    placeholder="Αναζήτηση πόρων, κατηγοριών... (πατήστε '/' για γρήγορη αναζήτηση)"
+                    placeholder="Αναζήτηση πόρων, κατηγοριών..."
                 >
                 <span class="search-icon">🔍</span>
             </div>
@@ -1124,17 +1088,11 @@
                 <!-- Action buttons -->
                 <div class="action-buttons">
                     <button class="action-btn" id="exportBtn">📥 Export</button>
-                    <button class="action-btn" id="suggestBtn">➕ Πρόταση</button>
+                    <button class="action-btn" id="suggestBtn">➕ Suggest</button>
                     <div class="theme-toggle" id="themeToggle"></div>
                 </div>
             </div>
 
-            <!-- Jump navigation -->
-            <div class="jump-nav">
-                <a href="#humanities" class="jump-link">Ανθρωπιστικές Ε.</a>
-                <a href="#social" class="jump-link">Κοινωνικές Ε.</a>
-                <a href="#websites" class="jump-link">Ιστότοποι</a>
-            </div>
         </div>
 
         <header>
@@ -1295,7 +1253,7 @@
                                 <span class="resource-name">
                                     <span class="fav-star" data-resource="history">⭐</span>
                                     <span class="note-icon" data-resource="history">📝</span>
-                                    Glossary of History
+                                    Glossary οf History
                                 </span>
                                 <span class="lang-tag">EN</span>
                             </a>
@@ -1317,7 +1275,7 @@
                                 <span class="resource-name">
                                     <span class="fav-star" data-resource="philosophy-dict">⭐</span>
                                     <span class="note-icon" data-resource="philosophy-dict">📝</span>
-                                    A Dictionary of Philosophical Terms & Names
+                                    A Dictionary οf Philosophical Terms & Names
                                 </span>
                                 <span class="lang-tag">EN</span>
                             </a>
@@ -1361,6 +1319,22 @@
                                     <span class="fav-star" data-resource="linguistics">⭐</span>
                                     <span class="note-icon" data-resource="linguistics">📝</span>
                                     Glossary οf Linguistics
+                                </span>
+                                <span class="lang-tag">EN</span>
+                            </a>
+                            <a href="https://www.greek-language.gr/greekLang/modern_greek/tools/lexica/glossology/index.html" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="GR">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="triantafyllidis-glossology">⭐</span>
+                                    <span class="note-icon" data-resource="triantafyllidis-glossology">📝</span>
+                                    Λεξικό Γλωσσολογικών Όρων Τριανταφυλλίδη
+                                </span>
+                                <span class="lang-tag">GR</span>
+                            </a>
+                            <a href="https://lingtermbase.neurolingo.gr/" class="resource-link" target="_blank" rel="noopener noreferrer" data-lang="EN">
+                                <span class="resource-name">
+                                    <span class="fav-star" data-resource="neurolingo-glossary">⭐</span>
+                                    <span class="note-icon" data-resource="neurolingo-glossary">📝</span>
+                                    Online Glossary of Linguistics Terminology
                                 </span>
                                 <span class="lang-tag">EN</span>
                             </a>
@@ -1472,37 +1446,25 @@
     <div class="modal" id="suggestModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Πρότεινε Νέο Πόρο</h3>
+                <h3 class="modal-title">Πρότεινε Πόρο</h3>
                 <button class="modal-close" id="closeSuggestModal">&times;</button>
             </div>
             <div class="modal-body">
-                <!-- Setup Instructions Banner -->
-                <div class="setup-banner">
-                    <div class="setup-banner-title">⚙️ Οδηγίες Ρύθμισης Google Form</div>
-                    <div class="setup-banner-text">
-                        Για να λειτουργήσει η αποστολή, χρειάζεται να ρυθμίσεις το Google Form:<br>
-                        1. Δημιούργησε ένα <a href="https://forms.google.com" target="_blank" style="color: #ffd700;">Google Form</a> με τα πεδία αυτής της φόρμας<br>
-                        2. Πάρε τα <code>entry IDs</code> από το HTML του form (F12 → Inspect)<br>
-                        3. Ενημέρωσε τις μεταβλητές <code>GOOGLE_FORM_ACTION_URL</code> και <code>ENTRY_IDS</code> στο JavaScript κώδικα<br>
-                        4. Δες αναλυτικές οδηγίες στα σχόλια του κώδικα (γραμμή ~1100)
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label class="form-label">Όνομα Πόρου: <span style="color: var(--red);">*</span></label>
-                    <input type="text" class="form-input" id="resourceName" placeholder="π.χ. Medical Dictionary" required>
+                    <label class="form-label">Όνομα Πόρου:</label>
+                    <input type="text" class="form-input" id="resourceName" placeholder="π.χ. Medical Dictionary">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">URL: <span style="color: var(--red);">*</span></label>
-                    <input type="url" class="form-input" id="resourceUrl" placeholder="https://..." required>
+                    <label class="form-label">URL:</label>
+                    <input type="url" class="form-input" id="resourceUrl" placeholder="https://...">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Κατηγορία: <span style="color: var(--red);">*</span></label>
-                    <select class="form-select" id="resourceCategory" required>
+                    <label class="form-label">Κατηγορία:</label>
+                    <select class="form-select" id="resourceCategory">
                         <option value="">Επιλέξτε κατηγορία</option>
-                        <option value="Ανθρωπιστικές Επιστήμες">Ανθρωπιστικές Επιστήμες</option>
-                        <option value="Κοινωνικές Επιστήμες">Κοινωνικές Επιστήμες</option>
-                        <option value="Ιστότοποι">Ιστότοποι</option>
+                        <option value="humanities">Ανθρωπιστικές Επιστήμες</option>
+                        <option value="social">Κοινωνικές Επιστήμες</option>
+                        <option value="websites">Ιστότοποι</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1515,7 +1477,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Σχόλια (προαιρετικό):</label>
-                    <textarea class="form-textarea" id="resourceComments" placeholder="Προσθέστε επιπλέον πληροφορίες για τον πόρο..."></textarea>
+                    <textarea class="form-textarea" id="resourceComments" placeholder="Προσθέστε επιπλέον πληροφορίες..."></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1526,56 +1488,15 @@
     </div>
 
     <script>
-        // ========================================
-        // CONFIGURATION: GOOGLE FORMS INTEGRATION
-        // ========================================
-
-        /* 
-         * SETUP INSTRUCTIONS:
-         * 
-         * 1. Create a Google Form at https://forms.google.com with these fields:
-         *    - Όνομα Πόρου (Short answer, Required)
-         *    - URL (Short answer, Required)  
-         *    - Κατηγορία (Multiple choice, Required)
-         *    - Γλώσσα (Multiple choice)
-         *    - Σχόλια (Paragraph)
-         * 
-         * 2. Get your Form ID:
-         *    - Open your form and click "Send"
-         *    - Copy the link - it looks like: https://docs.google.com/forms/d/e/FORM_ID_HERE/viewform
-         *    - Replace YOUR_FORM_ID below with your actual ID
-         * 
-         * 3. Get Entry IDs for each field:
-         *    - Open form in preview
-         *    - Right-click → Inspect (F12)
-         *    - Find each input field in HTML - they have names like "entry.123456789"
-         *    - Replace the entry IDs below with your actual ones
-         * 
-         * 4. Save and test!
-         */
-
-        // REPLACE THIS with your actual Google Form ID
-        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse';
-
-        // REPLACE THESE with your actual Entry IDs from Google Form HTML
-        const ENTRY_IDS = {
-            name: 'entry.123456789',      // Field: Όνομα Πόρου
-            url: 'entry.987654321',        // Field: URL
-            category: 'entry.111222333',   // Field: Κατηγορία
-            lang: 'entry.444555666',       // Field: Γλώσσα
-            comments: 'entry.777888999'    // Field: Σχόλια
-        };
-
-        // ========================================
-        // 1. SEARCH FUNCTIONALITY
-        // ========================================
+        // ========== 1. SEARCH FUNCTIONALITY ==========
         const searchBox = document.getElementById('searchBox');
         const noResults = document.getElementById('noResults');
 
         searchBox.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase().trim();
-
+            
             if (searchTerm === '') {
+                // Reset all visibility
                 document.querySelectorAll('.resource-link, .subcategory, .category').forEach(el => {
                     el.classList.remove('hidden', 'highlight');
                 });
@@ -1585,11 +1506,12 @@
 
             let hasResults = false;
 
+            // Search through all resource links
             document.querySelectorAll('.resource-link').forEach(link => {
                 const resourceName = link.querySelector('.resource-name').textContent.toLowerCase();
                 const categoryTitle = link.closest('.category').querySelector('.category-title').textContent.toLowerCase();
                 const subcategoryTitle = link.closest('.subcategory')?.querySelector('.subcategory-title')?.textContent.toLowerCase() || '';
-
+                
                 if (resourceName.includes(searchTerm) || categoryTitle.includes(searchTerm) || subcategoryTitle.includes(searchTerm)) {
                     link.classList.remove('hidden');
                     link.classList.add('highlight');
@@ -1600,6 +1522,7 @@
                 }
             });
 
+            // Hide empty subcategories
             document.querySelectorAll('.subcategory').forEach(sub => {
                 const visibleLinks = sub.querySelectorAll('.resource-link:not(.hidden)');
                 if (visibleLinks.length === 0) {
@@ -1609,6 +1532,7 @@
                 }
             });
 
+            // Hide empty categories
             document.querySelectorAll('.category').forEach(cat => {
                 const visibleSubs = cat.querySelectorAll('.subcategory:not(.hidden)');
                 if (visibleSubs.length === 0) {
@@ -1618,6 +1542,7 @@
                 }
             });
 
+            // Show/hide no results message
             if (hasResults) {
                 noResults.classList.remove('visible');
             } else {
@@ -1625,21 +1550,21 @@
             }
         });
 
-        // ========================================
-        // 2. LANGUAGE FILTERS
-        // ========================================
+        // ========== 2. LANGUAGE FILTERS ==========
         const filterButtons = document.querySelectorAll('.filter-btn');
 
         filterButtons.forEach(btn => {
             btn.addEventListener('click', function() {
+                // Update active state
                 filterButtons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
 
                 const selectedLang = this.dataset.lang;
 
+                // Filter resources
                 document.querySelectorAll('.resource-link').forEach(link => {
                     const linkLang = link.dataset.lang;
-
+                    
                     if (selectedLang === 'all' || linkLang === selectedLang) {
                         link.classList.remove('hidden');
                     } else {
@@ -1647,6 +1572,7 @@
                     }
                 });
 
+                // Hide empty subcategories
                 document.querySelectorAll('.subcategory').forEach(sub => {
                     const visibleLinks = sub.querySelectorAll('.resource-link:not(.hidden)');
                     if (visibleLinks.length === 0) {
@@ -1656,6 +1582,7 @@
                     }
                 });
 
+                // Hide empty categories
                 document.querySelectorAll('.category').forEach(cat => {
                     const visibleSubs = cat.querySelectorAll('.subcategory:not(.hidden)');
                     if (visibleSubs.length === 0) {
@@ -1665,20 +1592,19 @@
                     }
                 });
 
+                // Clear search
                 searchBox.value = '';
                 document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
             });
         });
 
-        // ========================================
-        // 3. JUMP TO CATEGORY NAVIGATION
-        // ========================================
+        // ========== 3. JUMP TO CATEGORY NAVIGATION ==========
         document.querySelectorAll('.jump-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
-
+                
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
@@ -1688,38 +1614,38 @@
             });
         });
 
-        // ========================================
-        // 4. FAVORITES SYSTEM
-        // ========================================
+        // ========== 4. FAVORITES SYSTEM ==========
         let favorites = JSON.parse(localStorage.getItem('afterword-favorites') || '[]');
 
+        // Initialize favorites on load
         favorites.forEach(resourceId => {
             const star = document.querySelector(`.fav-star[data-resource="${resourceId}"]`);
             if (star) star.classList.add('active');
         });
 
+        // Handle favorite clicks
         document.querySelectorAll('.fav-star').forEach(star => {
             star.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-
+                
                 const resourceId = this.dataset.resource;
-
+                
                 if (favorites.includes(resourceId)) {
+                    // Remove from favorites
                     favorites = favorites.filter(id => id !== resourceId);
                     this.classList.remove('active');
                 } else {
+                    // Add to favorites
                     favorites.push(resourceId);
                     this.classList.add('active');
                 }
-
+                
                 localStorage.setItem('afterword-favorites', JSON.stringify(favorites));
             });
         });
 
-        // ========================================
-        // 6. PERSONAL NOTES
-        // ========================================
+        // ========== 6. PERSONAL NOTES ==========
         let notes = JSON.parse(localStorage.getItem('afterword-notes') || '{}');
         let currentNoteResource = null;
 
@@ -1729,6 +1655,7 @@
         const deleteNoteBtn = document.getElementById('deleteNote');
         const closeNoteModalBtn = document.getElementById('closeNoteModal');
 
+        // Initialize notes on load
         Object.keys(notes).forEach(resourceId => {
             const noteIcon = document.querySelector(`.note-icon[data-resource="${resourceId}"]`);
             if (noteIcon && notes[resourceId]) {
@@ -1736,11 +1663,12 @@
             }
         });
 
+        // Open note modal
         document.querySelectorAll('.note-icon').forEach(icon => {
             icon.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-
+                
                 currentNoteResource = this.dataset.resource;
                 noteTextarea.value = notes[currentNoteResource] || '';
                 noteModal.classList.add('active');
@@ -1748,9 +1676,10 @@
             });
         });
 
+        // Save note
         saveNoteBtn.addEventListener('click', function() {
             const noteText = noteTextarea.value.trim();
-
+            
             if (noteText) {
                 notes[currentNoteResource] = noteText;
                 document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.add('has-note');
@@ -1758,11 +1687,12 @@
                 delete notes[currentNoteResource];
                 document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.remove('has-note');
             }
-
+            
             localStorage.setItem('afterword-notes', JSON.stringify(notes));
             noteModal.classList.remove('active');
         });
 
+        // Delete note
         deleteNoteBtn.addEventListener('click', function() {
             delete notes[currentNoteResource];
             document.querySelector(`.note-icon[data-resource="${currentNoteResource}"]`).classList.remove('has-note');
@@ -1770,6 +1700,7 @@
             noteModal.classList.remove('active');
         });
 
+        // Close note modal
         closeNoteModalBtn.addEventListener('click', function() {
             noteModal.classList.remove('active');
         });
@@ -1780,9 +1711,7 @@
             }
         });
 
-        // ========================================
-        // 11. SUGGEST A RESOURCE (GOOGLE FORMS)
-        // ========================================
+        // ========== 11. SUGGEST A RESOURCE ==========
         const suggestBtn = document.getElementById('suggestBtn');
         const suggestModal = document.getElementById('suggestModal');
         const closeSuggestModalBtn = document.getElementById('closeSuggestModal');
@@ -1809,55 +1738,38 @@
             const comments = document.getElementById('resourceComments').value.trim();
 
             if (!name || !url || !category) {
-                alert('⚠️ Παρακαλώ συμπληρώστε όλα τα απαιτούμενα πεδία:\n- Όνομα Πόρου\n- URL\n- Κατηγορία');
+                alert('Παρακαλώ συμπληρώστε όλα τα απαιτούμενα πεδία (Όνομα, URL, Κατηγορία)');
                 return;
             }
 
-            // Check if Google Form is configured
-            if (GOOGLE_FORM_ACTION_URL.includes('YOUR_FORM_ID_HERE')) {
-                alert('⚠️ Το Google Form δεν έχει ρυθμιστεί ακόμα!\n\nΠαρακαλώ δες τις οδηγίες στο modal ή στα σχόλια του κώδικα για να ρυθμίσεις το Google Form.');
-                return;
-            }
+            // Create suggestion object
+            const suggestion = {
+                name,
+                url,
+                category,
+                lang,
+                comments,
+                timestamp: new Date().toISOString()
+            };
 
-            // Create form data for Google Forms submission
-            const formData = new FormData();
-            formData.append(ENTRY_IDS.name, name);
-            formData.append(ENTRY_IDS.url, url);
-            formData.append(ENTRY_IDS.category, category);
-            formData.append(ENTRY_IDS.lang, lang);
-            formData.append(ENTRY_IDS.comments, comments);
+            // Save to localStorage
+            let suggestions = JSON.parse(localStorage.getItem('afterword-suggestions') || '[]');
+            suggestions.push(suggestion);
+            localStorage.setItem('afterword-suggestions', JSON.stringify(suggestions));
 
-            // Submit to Google Forms
-            fetch(GOOGLE_FORM_ACTION_URL, {
-                method: 'POST',
-                mode: 'no-cors', // Important! Google Forms requires no-cors mode
-                body: formData
-            }).then(() => {
-                // Success! (Note: no-cors means we can't read the response, but submission works)
-                alert('✅ Ευχαριστούμε για την πρόταση σας!\n\nΗ πρόταση καταχωρήθηκε επιτυχώς και θα εξεταστεί σύντομα.');
+            // In a real application, you would send this to a server
+            console.log('New resource suggestion:', suggestion);
 
-                // Reset form
-                document.getElementById('resourceName').value = '';
-                document.getElementById('resourceUrl').value = '';
-                document.getElementById('resourceCategory').value = '';
-                document.getElementById('resourceLang').value = 'EN';
-                document.getElementById('resourceComments').value = '';
+            alert('Ευχαριστούμε για την πρόταση σας! Θα την εξετάσουμε σύντομα.');
 
-                suggestModal.classList.remove('active');
-            }).catch((error) => {
-                // Even if there's an "error" due to no-cors, the submission usually works
-                console.log('Submission attempted (no-cors mode):', error);
-                alert('✅ Η πρόταση σας καταχωρήθηκε! Ευχαριστούμε.');
+            // Reset form
+            document.getElementById('resourceName').value = '';
+            document.getElementById('resourceUrl').value = '';
+            document.getElementById('resourceCategory').value = '';
+            document.getElementById('resourceLang').value = 'EN';
+            document.getElementById('resourceComments').value = '';
 
-                // Reset form anyway
-                document.getElementById('resourceName').value = '';
-                document.getElementById('resourceUrl').value = '';
-                document.getElementById('resourceCategory').value = '';
-                document.getElementById('resourceLang').value = 'EN';
-                document.getElementById('resourceComments').value = '';
-
-                suggestModal.classList.remove('active');
-            });
+            suggestModal.classList.remove('active');
         });
 
         suggestModal.addEventListener('click', function(e) {
@@ -1866,14 +1778,13 @@
             }
         });
 
-        // ========================================
-        // 13. EXPORT FUNCTIONALITY
-        // ========================================
+        // ========== 13. EXPORT FUNCTIONALITY ==========
         const exportBtn = document.getElementById('exportBtn');
 
         exportBtn.addEventListener('click', function() {
+            // Collect all resources
             const resources = [];
-
+            
             document.querySelectorAll('.resource-link:not(.hidden)').forEach(link => {
                 const name = link.querySelector('.resource-name').textContent.trim().replace(/[⭐📝]/g, '').trim();
                 const url = link.href;
@@ -1883,7 +1794,7 @@
                 const isFavorite = favorites.includes(link.querySelector('.fav-star').dataset.resource);
                 const resourceId = link.querySelector('.fav-star').dataset.resource;
                 const note = notes[resourceId] || '';
-
+                
                 resources.push({
                     category,
                     subcategory,
@@ -1895,8 +1806,8 @@
                 });
             });
 
-            // Create CSV with UTF-8 BOM for Excel compatibility
-            let csv = '\ufeffCategory,Subcategory,Resource Name,URL,Language,Favorite,Note\n';
+            // Create CSV
+            let csv = 'Category,Subcategory,Resource Name,URL,Language,Favorite,Note\n';
             resources.forEach(r => {
                 csv += `"${r.category}","${r.subcategory}","${r.name}","${r.url}","${r.lang}","${r.favorite}","${r.note.replace(/"/g, '""')}"\n`;
             });
@@ -1909,12 +1820,11 @@
             link.click();
         });
 
-        // ========================================
-        // 14. DARK/LIGHT MODE TOGGLE
-        // ========================================
+        // ========== 14. DARK/LIGHT MODE TOGGLE ==========
         const themeToggle = document.getElementById('themeToggle');
         let currentTheme = localStorage.getItem('afterword-theme') || 'light';
 
+        // Apply saved theme
         if (currentTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
@@ -1927,13 +1837,11 @@
                 document.documentElement.removeAttribute('data-theme');
                 currentTheme = 'light';
             }
-
+            
             localStorage.setItem('afterword-theme', currentTheme);
         });
 
-        // ========================================
-        // KEYBOARD SHORTCUTS
-        // ========================================
+        // ========== KEYBOARD SHORTCUTS ==========
         document.addEventListener('keydown', function(e) {
             // "/" to focus search
             if (e.key === '/' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
@@ -1953,16 +1861,6 @@
                 }
             }
         });
-
-        // ========================================
-        // INITIALIZATION MESSAGE
-        // ========================================
-        console.log('%c🎨 Afterword Scholar Hub', 'font-size: 20px; font-weight: bold; color: #c63939;');
-        console.log('%cVersion 2.0 with Google Forms Integration', 'font-size: 12px; color: #6a8ba3;');
-        console.log('');
-        console.log('%c⚙️ Setup Required:', 'font-weight: bold;');
-        console.log('Please configure your Google Form settings in the JavaScript code.');
-        console.log('See line ~1100 for detailed instructions.');
     </script>
 </body>
 </html>
